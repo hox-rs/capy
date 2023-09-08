@@ -8,6 +8,9 @@
   "repository": "https://github.com/hox-rs/capy",
   "author": "Leonardo Lessa <lrlessa@gmail.com>",
   "license": "MIT",
+  "engine": {
+    "node": "18.x"
+  },
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
     "storybook": "storybook dev -p 6006",
