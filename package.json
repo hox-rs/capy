@@ -8,7 +8,7 @@
   "repository": "https://github.com/hox-rs/capy",
   "author": "Leonardo Lessa <lrlessa@gmail.com>",
   "license": "MIT",
-  "engine": {
+  "engines": {
     "node": "18.x"
   },
   "scripts": {
