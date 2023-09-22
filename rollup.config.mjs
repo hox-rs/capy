@@ -29,7 +29,15 @@ export default [
       typescript({ tsconfig: "./tsconfig.json" }),
       terser(),
     ],
-    external: ["react", "react-dom"],
+    external: [
+      "react",
+      "react-dom",
+      "@mui/material",
+      "@mui/icons-material",
+      "@emotion/react",
+      "@emotion/styled",
+      "react-hook-form",
+    ],
   },
   {
     input: "src/index.ts",
