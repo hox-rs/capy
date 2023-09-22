@@ -15,7 +15,7 @@
     "build": "rollup -c --bundleConfigAsCjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.22.15",
@@ -49,7 +49,13 @@
     "vite": "^4.4.9"
   },
   "peerDependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.10",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  }
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.46.2",
+    "@mui/icons-material": "^5.14.9"
+  },
+  "dependencies": {}
 }

@@ -4,7 +4,7 @@ import Button from "./Button";
 
 const meta: Meta<typeof Button> = {
   component: Button,
-  title: "HOX Capy/Button",
+  title: "HOX Capy/Button sample",
   argTypes: {},
 };
 
