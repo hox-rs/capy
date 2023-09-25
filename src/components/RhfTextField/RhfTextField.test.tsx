@@ -19,6 +19,7 @@
 
 import React from "react";
 import { fireEvent, render } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
 import RhfTextField from "./RhfTextField";
 import { useForm } from "react-hook-form";
