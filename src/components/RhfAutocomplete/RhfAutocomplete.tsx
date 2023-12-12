@@ -32,7 +32,6 @@ const RhfAutocomplete = <
   const {
     field: { onChange, value, ...props },
   } = useController({ control, name, defaultValue });
-  console.log(value);
   return (
     <FormControl error={!!error} fullWidth={fullWidth}>
       <Autocomplete
@@ -62,6 +61,17 @@ const RhfAutocomplete = <
           }
         }}
         defaultValue={defaultValue}
+        renderOption={
+          rest.renderOption ||
+          ((
+            renderProps: React.HTMLAttributes<HTMLLIElement>,
+            option: RhfAutocompleteOption & string
+          ) => (
+            <li {...renderProps} key={option.value}>
+              {option?.label || option}
+            </li>
+          ))
+        }
         renderInput={(params) => (
           <TextField
             error={!!error}
