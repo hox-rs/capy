@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { FieldValues, FieldPath, UseControllerProps, Merge, FieldError } from 'react-hook-form';
+import { FieldValues, FieldPath, UseControllerProps, FieldError } from 'react-hook-form';
 import { AutocompleteProps, CheckboxProps, SwitchProps, TextFieldProps } from '@mui/material';
 import { DatePickerProps } from '@mui/x-date-pickers';
 
@@ -8,7 +8,7 @@ type RhfAutocompleteOption = {
     value: string;
 };
 type RhfAutocompleteProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> = UseControllerProps<TFieldValues, TName> & {
-    error?: Merge<FieldError, FieldError[]>;
+    error?: (FieldError & FieldError[]) | undefined;
     label: string;
     variant?: "standard" | "outlined" | "filled";
     helperText?: string;
@@ -47,4 +47,4 @@ type RhfTextFieldProps<TFieldValues extends FieldValues, TName extends FieldPath
 
 declare const RhfTextField: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, label, control, defaultValue, error, variant, rows, type, fullWidth, ...rest }: RhfTextFieldProps<TFieldValues, TName>) => React.JSX.Element;
 
-export { RhfAutocomplete, RhfCheckbox, RhfDatePicker, RhfSwitch, RhfTextField };
+export { RhfAutocomplete, type RhfAutocompleteOption, type RhfAutocompleteProps, RhfCheckbox, type RhfCheckboxProps, RhfDatePicker, type RhfDatePickerProps, RhfSwitch, type RhfSwitchProps, RhfTextField, type RhfTextFieldProps };
