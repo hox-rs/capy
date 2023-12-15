@@ -1,6 +1,6 @@
 {
   "name": "@hox-rs/capy",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "hox.rs react components library",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
