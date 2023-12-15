@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { FieldValues, FieldPath, UseControllerProps, FieldError } from 'react-hook-form';
+import { FieldValues, FieldPath, UseControllerProps, Merge, FieldError } from 'react-hook-form';
 import { AutocompleteProps, CheckboxProps, SwitchProps, TextFieldProps } from '@mui/material';
 import { DatePickerProps, DateTimePickerProps } from '@mui/x-date-pickers';
 
@@ -8,7 +8,7 @@ type RhfAutocompleteOption = {
     value: string;
 };
 type RhfAutocompleteProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> = UseControllerProps<TFieldValues, TName> & {
-    error?: FieldError;
+    error?: Merge<FieldError, (FieldError | undefined)[]> | undefined;
     label: string;
     variant?: "standard" | "outlined" | "filled";
     helperText?: string;
