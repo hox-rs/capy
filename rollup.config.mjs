@@ -24,7 +24,7 @@ export default [
     ],
     plugins: [
       peerDepsExternal(),
-      resolve(),
+      resolve({ preferBuiltins: true }),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
       terser(),
@@ -34,6 +34,7 @@ export default [
       "react-dom",
       "@mui/material",
       "@mui/icons-material",
+      "@mui/x-date-pickers",
       "@emotion/react",
       "@emotion/styled",
       "react-hook-form",
