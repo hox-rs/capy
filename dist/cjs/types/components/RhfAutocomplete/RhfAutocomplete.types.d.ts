@@ -5,7 +5,7 @@ export type RhfAutocompleteOption = {
     value: string;
 };
 export type RhfAutocompleteProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> = UseControllerProps<TFieldValues, TName> & {
-    error?: (FieldError & FieldError[]) | undefined;
+    error?: FieldError;
     label: string;
     variant?: "standard" | "outlined" | "filled";
     helperText?: string;
