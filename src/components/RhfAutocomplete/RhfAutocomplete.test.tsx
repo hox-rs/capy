@@ -75,7 +75,7 @@ describe("Testing <RhfAutocomplete />", () => {
       <RhfAutocompleteWrapper
         name="field-name"
         label="Field label"
-        defaultValue="label"
+        defaultValue="value"
         multiple={false}
         error={{ message: "error message" }}
         options={[

@@ -1,16 +1,8 @@
-import React from "react";
-import { TextField, TextFieldProps } from "@mui/material";
+"use client";
 
-type MoneyFieldProps = TextFieldProps & {
-  currencySymbol?: string;
-  decimalSeparator?: string;
-  thousandSeparator?: string;
-  value: number;
-  onChange?: (
-    event: React.ChangeEvent<HTMLInputElement>,
-    value: number
-  ) => void;
-};
+import React from "react";
+import { TextField } from "@mui/material";
+import { MoneyFieldProps } from "./MoneyField.types";
 
 const MoneyField = ({
   currencySymbol = "R$",
@@ -29,7 +21,6 @@ const MoneyField = ({
     // left pad only if there is less than 3 digits
     const leftZeros = onlyNumbers.padStart(3, "0");
     const cents = leftZeros.slice(-2);
-    console.log(cents);
     const integer = leftZeros.slice(0, -2);
     const integerWithThousandSeparator = integer.replace(
       /\B(?=(\d{3})+(?!\d))/g,
@@ -42,9 +33,10 @@ const MoneyField = ({
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     const onlyNumbers = value.replace(/\D/g, "").replace(/^0+/, "");
-    console.log(onlyNumbers);
 
-    onChange?.(event, Number(onlyNumbers) / 100);
+    console.log();
+
+    onChange?.(Number(onlyNumbers) / 100);
   };
 
   return (
@@ -53,7 +45,6 @@ const MoneyField = ({
       InputProps={{
         startAdornment: currencySymbol,
       }}
-      // align right
       sx={{
         "& input": {
           textAlign: "right",
