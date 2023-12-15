@@ -9,7 +9,7 @@ import RhfMoneyField from "./components/RhfMoneyField";
 export * from "./components/RhfAutocomplete/RhfAutocomplete.types";
 export * from "./components/RhfCheckbox/RhfCheckbox.types";
 export * from "./components/RhfDatePicker/RhfDatePicker.types";
-export * from "./components/RhfDateTimePicker/RhfDateTimePicker.test";
+export * from "./components/RhfDateTimePicker/RhfDateTimePicker.types";
 export * from "./components/RhfSwitch/RhfSwitch.types";
 export * from "./components/RhfTextField/RhfTextField.types";
 export * from "./components/MoneyField/MoneyField.types";
