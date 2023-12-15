@@ -73,4 +73,4 @@ type RhfMoneyFieldProps<TFieldValues extends FieldValues, TName extends FieldPat
 
 declare const RhfMoneyField: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, label, control, defaultValue, error, variant, rows, type, fullWidth, ...rest }: RhfMoneyFieldProps<TFieldValues, TName>) => React.JSX.Element;
 
-export { MoneyField, type MoneyFieldProps, RhfAutocomplete, type RhfAutocompleteOption, type RhfAutocompleteProps, RhfCheckbox, type RhfCheckboxProps, RhfDatePicker, type RhfDatePickerProps, RhfDateTimePicker, RhfMoneyField, type RhfMoneyFieldProps, RhfSwitch, type RhfSwitchProps, RhfTextField, type RhfTextFieldProps };
+export { MoneyField, type MoneyFieldProps, RhfAutocomplete, type RhfAutocompleteOption, type RhfAutocompleteProps, RhfCheckbox, type RhfCheckboxProps, RhfDatePicker, type RhfDatePickerProps, RhfDateTimePicker, type RhfDateTimePickerProps, RhfMoneyField, type RhfMoneyFieldProps, RhfSwitch, type RhfSwitchProps, RhfTextField, type RhfTextFieldProps };
