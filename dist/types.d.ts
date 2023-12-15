@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { FieldValues, FieldPath, UseControllerProps, FieldError } from 'react-hook-form';
 import { AutocompleteProps, CheckboxProps, SwitchProps, TextFieldProps } from '@mui/material';
-import { DatePickerProps } from '@mui/x-date-pickers';
+import { DatePickerProps, DateTimePickerProps } from '@mui/x-date-pickers';
 
 type RhfAutocompleteOption = {
     label: string;
@@ -34,6 +34,16 @@ type RhfDatePickerProps<TFieldValues extends FieldValues, TName extends FieldPat
 
 declare const RhfDatePicker: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, label, control, defaultValue, error, variant, fullWidth, helperText, ...rest }: RhfDatePickerProps<TFieldValues, TName>) => React.JSX.Element;
 
+type RhfDateTimePickerProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> = UseControllerProps<TFieldValues, TName> & {
+    error?: FieldError;
+    label: string;
+    variant?: "outlined" | "standard" | "filled";
+    fullWidth?: boolean;
+    helperText?: string;
+} & Omit<DateTimePickerProps<Date>, "renderInput" | "value" | "error" | "onChange">;
+
+declare const RhfDateTimePicker: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, label, control, defaultValue, error, variant, fullWidth, helperText, ...rest }: RhfDateTimePickerProps<TFieldValues, TName>) => React.JSX.Element;
+
 type RhfSwitchProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> = UseControllerProps<TFieldValues, TName> & {
     error?: FieldError;
     label: ReactNode | string;
@@ -63,4 +73,4 @@ type RhfMoneyFieldProps<TFieldValues extends FieldValues, TName extends FieldPat
 
 declare const RhfMoneyField: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, label, control, defaultValue, error, variant, rows, type, fullWidth, ...rest }: RhfMoneyFieldProps<TFieldValues, TName>) => React.JSX.Element;
 
-export { MoneyField, type MoneyFieldProps, RhfAutocomplete, type RhfAutocompleteOption, type RhfAutocompleteProps, RhfCheckbox, type RhfCheckboxProps, RhfDatePicker, type RhfDatePickerProps, RhfMoneyField, type RhfMoneyFieldProps, RhfSwitch, type RhfSwitchProps, RhfTextField, type RhfTextFieldProps };
+export { MoneyField, type MoneyFieldProps, RhfAutocomplete, type RhfAutocompleteOption, type RhfAutocompleteProps, RhfCheckbox, type RhfCheckboxProps, RhfDatePicker, type RhfDatePickerProps, RhfDateTimePicker, RhfMoneyField, type RhfMoneyFieldProps, RhfSwitch, type RhfSwitchProps, RhfTextField, type RhfTextFieldProps };
