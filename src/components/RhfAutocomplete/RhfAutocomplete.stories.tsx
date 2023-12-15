@@ -27,7 +27,7 @@ Standard.args = {
   defaultValue: "value",
   options: [
     { value: "value", label: "label" },
-    { value: "value2", label: "label2" },
+    { value: "value2", label: "label" },
   ],
 };
 
