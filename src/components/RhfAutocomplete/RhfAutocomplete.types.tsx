@@ -3,6 +3,7 @@ import {
   FieldError,
   FieldPath,
   FieldValues,
+  Merge,
   UseControllerProps,
 } from "react-hook-form";
 
@@ -15,7 +16,7 @@ export type RhfAutocompleteProps<
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues>
 > = UseControllerProps<TFieldValues, TName> & {
-  error?: FieldError;
+  error?: Merge<FieldError, (FieldError | undefined)[]> | undefined;
   label: string;
   variant?: "standard" | "outlined" | "filled";
   helperText?: string;
