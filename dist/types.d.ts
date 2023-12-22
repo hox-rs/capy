@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
+import * as react_hook_form from 'react-hook-form';
 import { FieldValues, FieldPath, UseControllerProps, Merge, FieldError } from 'react-hook-form';
-import { AutocompleteProps, CheckboxProps, SwitchProps, TextFieldProps } from '@mui/material';
+import { AutocompleteProps, CheckboxProps, SwitchProps, TextFieldProps, RadioGroupProps } from '@mui/material';
 import { DatePickerProps, DateTimePickerProps } from '@mui/x-date-pickers';
 
 type RhfAutocompleteOption = {
@@ -73,4 +74,38 @@ type RhfMoneyFieldProps<TFieldValues extends FieldValues, TName extends FieldPat
 
 declare const RhfMoneyField: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, label, control, defaultValue, error, variant, rows, type, fullWidth, ...rest }: RhfMoneyFieldProps<TFieldValues, TName>) => React.JSX.Element;
 
-export { MoneyField, type MoneyFieldProps, RhfAutocomplete, type RhfAutocompleteOption, type RhfAutocompleteProps, RhfCheckbox, type RhfCheckboxProps, RhfDatePicker, type RhfDatePickerProps, RhfDateTimePicker, type RhfDateTimePickerProps, RhfMoneyField, type RhfMoneyFieldProps, RhfSwitch, type RhfSwitchProps, RhfTextField, type RhfTextFieldProps };
+type RhfCheckboxGroupOption = {
+    label: string;
+    value: string;
+    disabled?: boolean;
+};
+type RhfCheckboxGroupProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> = UseControllerProps<TFieldValues, TName> & {
+    error?: Merge<FieldError, (FieldError | undefined)[]> | undefined;
+    label: string;
+    options: RhfCheckboxGroupOption[];
+    disabled?: boolean;
+    row?: boolean;
+};
+
+declare const RhfCheckboxGroup: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, label, options, control, defaultValue, error, row, }: RhfCheckboxGroupProps<TFieldValues, TName>) => React.JSX.Element;
+
+type RhfRadioGroupOption = {
+    value: string | boolean | number;
+    label: string;
+    disabled?: boolean;
+};
+type RhfRadioGroupProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> = UseControllerProps<TFieldValues, TName> & {
+    error?: FieldError;
+    label: string;
+    options: RhfRadioGroupOption[];
+    disabled?: boolean;
+};
+
+declare const RhfRadioGroup: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, label, options, control, defaultValue, error, disabled, ...rest }: RadioGroupProps & react_hook_form.UseControllerProps<TFieldValues, TName> & {
+    error?: react_hook_form.FieldError | undefined;
+    label: string;
+    options: RhfRadioGroupOption[];
+    disabled?: boolean | undefined;
+}) => React.JSX.Element;
+
+export { MoneyField, type MoneyFieldProps, RhfAutocomplete, type RhfAutocompleteOption, type RhfAutocompleteProps, RhfCheckbox, RhfCheckboxGroup, type RhfCheckboxGroupOption, type RhfCheckboxGroupProps, type RhfCheckboxProps, RhfDatePicker, type RhfDatePickerProps, RhfDateTimePicker, type RhfDateTimePickerProps, RhfMoneyField, type RhfMoneyFieldProps, RhfRadioGroup, type RhfRadioGroupOption, type RhfRadioGroupProps, RhfSwitch, type RhfSwitchProps, RhfTextField, type RhfTextFieldProps };
