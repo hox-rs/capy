@@ -70,7 +70,7 @@ declare const MoneyField: ({ currencySymbol, decimalSeparator, thousandSeparator
 
 type RhfMoneyFieldProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> = UseControllerProps<TFieldValues, TName> & {
     error?: FieldError;
-} & Omit<MoneyFieldProps, "error">;
+} & Omit<MoneyFieldProps, "error" | "value">;
 
 declare const RhfMoneyField: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, label, control, defaultValue, error, variant, rows, type, fullWidth, ...rest }: RhfMoneyFieldProps<TFieldValues, TName>) => React.JSX.Element;
 
