@@ -11,4 +11,4 @@ export type RhfMoneyFieldProps<
   TName extends FieldPath<TFieldValues>
 > = UseControllerProps<TFieldValues, TName> & {
   error?: FieldError;
-} & Omit<MoneyFieldProps, "error">;
+} & Omit<MoneyFieldProps, "error" | "value">;
