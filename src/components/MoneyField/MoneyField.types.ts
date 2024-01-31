@@ -1,6 +1,6 @@
 import { TextFieldProps } from "@mui/material";
 
-export type MoneyFieldProps = TextFieldProps & {
+export type MoneyFieldProps = Omit<TextFieldProps, "onChange"> & {
   currencySymbol?: string;
   decimalSeparator?: string;
   thousandSeparator?: string;

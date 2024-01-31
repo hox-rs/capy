@@ -58,7 +58,7 @@ type RhfTextFieldProps<TFieldValues extends FieldValues, TName extends FieldPath
 
 declare const RhfTextField: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, label, control, defaultValue, error, variant, rows, type, fullWidth, ...rest }: RhfTextFieldProps<TFieldValues, TName>) => React.JSX.Element;
 
-type MoneyFieldProps = TextFieldProps & {
+type MoneyFieldProps = Omit<TextFieldProps, "onChange"> & {
     currencySymbol?: string;
     decimalSeparator?: string;
     thousandSeparator?: string;
