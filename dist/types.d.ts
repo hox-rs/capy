@@ -66,7 +66,7 @@ type MoneyFieldProps = TextFieldProps & {
     onChange?: (value: number) => void;
 };
 
-declare const MoneyField: ({ currencySymbol, decimalSeparator, thousandSeparator, value, onChange, ...props }: MoneyFieldProps) => React.JSX.Element;
+declare const MoneyField: React.MemoExoticComponent<({ currencySymbol, decimalSeparator, thousandSeparator, value, onChange, ...props }: MoneyFieldProps) => React.JSX.Element>;
 
 type RhfMoneyFieldProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> = UseControllerProps<TFieldValues, TName> & {
     error?: FieldError;
