@@ -4,6 +4,26 @@ import React, { memo, useMemo } from "react";
 import { TextField } from "@mui/material";
 import { MoneyFieldProps } from "./MoneyField.types";
 
+const formatValue = (
+  value: number,
+  decimalSeparator: string,
+  thousandSeparator: string
+) => {
+  const fixedValue = (Math.round(value * 100) / 100).toFixed(2);
+
+  // Divide a parte inteira e decimal
+  const [integerPart, decimalPart] = fixedValue.split(".");
+
+  // Adiciona o separador de milhar à parte inteira
+  const integerWithThousandSeparator = integerPart.replace(
+    /\B(?=(\d{3})+(?!\d))/g,
+    thousandSeparator
+  );
+
+  // Junta todas as partes
+  return `${integerWithThousandSeparator}${decimalSeparator}${decimalPart}`;
+};
+
 const MoneyField = memo(
   ({
     currencySymbol = "R$",
@@ -13,32 +33,16 @@ const MoneyField = memo(
     onChange,
     ...props
   }: MoneyFieldProps) => {
-    const formatValue = useMemo(() => {
-      return (value: number) => {
-        // only numbers and remove left zeros that are not needed
-        const onlyNumbers = Number(value)
-          .toFixed(2)
-          .replace(/\D/g, "")
-          .replace(/^0+/, "");
-        // left pad only if there is less than 3 digits
-        const leftZeros = onlyNumbers.padStart(3, "0");
-        const cents = leftZeros.slice(-2);
-        const integer = leftZeros.slice(0, -2);
-        const integerWithThousandSeparator = integer.replace(
-          /\B(?=(\d{3})+(?!\d))/g,
-          thousandSeparator
-        );
-
-        return `${integerWithThousandSeparator}${decimalSeparator}${cents}`;
-      };
-    }, [decimalSeparator, thousandSeparator]);
-
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const { value } = event.target;
-      const onlyNumbers = value.replace(/\D/g, "").replace(/^0+/, "");
-
-      onChange?.(Number(onlyNumbers) / 100);
+      const onlyNumbers = value.replace(/^0+|[^0-9]+/g, "");
+      onChange?.(onlyNumbers ? Number(onlyNumbers) / 100 : 0);
     };
+
+    const transformedValue = useMemo(
+      () => formatValue(value, decimalSeparator, thousandSeparator),
+      [value, decimalSeparator, thousandSeparator]
+    );
 
     return (
       <TextField
@@ -51,7 +55,7 @@ const MoneyField = memo(
             textAlign: "right",
           },
         }}
-        value={formatValue(value)}
+        value={transformedValue}
         onChange={handleChange}
       />
     );
