@@ -19,6 +19,7 @@ const RhfSwitch = <
   control,
   defaultValue,
   error,
+  labelPlacement,
   ...props
 }: RhfSwitchProps<TFieldValues, TName>) => {
   const {
@@ -40,6 +41,7 @@ const RhfSwitch = <
             inputRef={ref}
           />
         }
+        labelPlacement={labelPlacement}
         label={label}
       />
       <FormHelperText>{error?.message}</FormHelperText>

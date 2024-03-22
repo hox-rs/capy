@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import * as react_hook_form from 'react-hook-form';
 import { FieldValues, FieldPath, UseControllerProps, Merge, FieldError } from 'react-hook-form';
-import { AutocompleteProps, CheckboxProps, SwitchProps, TextFieldProps, RadioGroupProps } from '@mui/material';
+import { AutocompleteProps, CheckboxProps, FormControlLabelProps, SwitchProps, TextFieldProps, RadioGroupProps } from '@mui/material';
 import { DatePickerProps, DateTimePickerProps } from '@mui/x-date-pickers';
 
 type RhfAutocompleteOption = {
@@ -48,9 +48,10 @@ declare const RhfDateTimePicker: <TFieldValues extends FieldValues, TName extend
 type RhfSwitchProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> = UseControllerProps<TFieldValues, TName> & {
     error?: FieldError;
     label: ReactNode | string;
+    labelPlacement: FormControlLabelProps["labelPlacement"];
 } & SwitchProps;
 
-declare const RhfSwitch: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, label, control, defaultValue, error, ...props }: RhfSwitchProps<TFieldValues, TName>) => React.JSX.Element;
+declare const RhfSwitch: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, label, control, defaultValue, error, labelPlacement, ...props }: RhfSwitchProps<TFieldValues, TName>) => React.JSX.Element;
 
 type RhfTextFieldProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> = UseControllerProps<TFieldValues, TName> & {
     error?: FieldError;
