@@ -1,4 +1,4 @@
-import { SwitchProps } from "@mui/material";
+import { FormControlLabelProps, SwitchProps } from "@mui/material";
 import { ReactNode } from "react";
 import {
   FieldError,
@@ -13,4 +13,5 @@ export type RhfSwitchProps<
 > = UseControllerProps<TFieldValues, TName> & {
   error?: FieldError;
   label: ReactNode | string;
+  labelPlacement: FormControlLabelProps["labelPlacement"];
 } & SwitchProps;
