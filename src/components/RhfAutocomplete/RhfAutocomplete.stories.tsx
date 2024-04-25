@@ -2,6 +2,8 @@ import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import RhfAutocomplete from "./RhfAutocomplete";
 import { useForm } from "react-hook-form";
+import { TextField, Tooltip } from "@mui/material";
+import { Help } from "@mui/icons-material";
 
 const meta: Meta<typeof RhfAutocomplete> = {
   component: RhfAutocomplete,
@@ -121,4 +123,29 @@ FreeSolo.args = {
     { value: "value2", label: "label2" },
   ],
   freeSolo: true,
+};
+
+export const WithTextFieldProps: Story = (args) => {
+  const { control } = useForm();
+
+  return <RhfAutocomplete control={control} name={args.name} {...args} />;
+};
+
+WithTextFieldProps.args = {
+  disabled: false,
+  name: "name",
+  multiple: false,
+  label: "Field label",
+  defaultValue: "value",
+  options: [
+    { value: "value", label: "label" },
+    { value: "value2", label: "label2" },
+  ],
+  InputProps: {
+    endAdornment: (
+      <Tooltip title="Teste tooltip">
+        <Help />
+      </Tooltip>
+    ),
+  },
 };
