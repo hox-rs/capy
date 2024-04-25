@@ -27,6 +27,7 @@ const RhfAutocomplete = <
   noOptionsText = "Nenhum resultado encontrado",
   variant = "outlined",
   helperText,
+  textFieldProps,
   ...rest
 }: RhfAutocompleteProps<TFieldValues, TName>) => {
   const {
@@ -74,6 +75,7 @@ const RhfAutocomplete = <
         }
         renderInput={(params) => (
           <TextField
+            {...textFieldProps}
             error={!!error}
             variant={variant}
             label={label}

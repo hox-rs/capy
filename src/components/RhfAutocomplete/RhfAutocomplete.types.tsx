@@ -1,4 +1,4 @@
-import { AutocompleteProps } from "@mui/material";
+import { AutocompleteProps, TextFieldProps } from "@mui/material";
 import {
   FieldError,
   FieldPath,
@@ -20,6 +20,7 @@ export type RhfAutocompleteProps<
   label: string;
   variant?: "standard" | "outlined" | "filled";
   helperText?: string;
+  textFieldProps?: Partial<TextFieldProps>;
   options: RhfAutocompleteOption[];
 } & Omit<
     AutocompleteProps<any, boolean, boolean, boolean>,
