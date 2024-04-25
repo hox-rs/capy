@@ -27,7 +27,7 @@ const RhfAutocomplete = <
   noOptionsText = "Nenhum resultado encontrado",
   variant = "outlined",
   helperText,
-  textFieldProps,
+  InputProps,
   ...rest
 }: RhfAutocompleteProps<TFieldValues, TName>) => {
   const {
@@ -75,11 +75,20 @@ const RhfAutocomplete = <
         }
         renderInput={(params) => (
           <TextField
-            {...textFieldProps}
+            {...params}
+            InputProps={{
+              ...params.InputProps,
+              ...InputProps,
+              endAdornment: (
+                <>
+                  {params.InputProps?.endAdornment}
+                  {InputProps?.endAdornment}
+                </>
+              ),
+            }}
             error={!!error}
             variant={variant}
             label={label}
-            {...params}
           />
         )}
         {...props}

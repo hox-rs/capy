@@ -1,4 +1,4 @@
-import { AutocompleteProps, TextFieldProps } from "@mui/material";
+import { AutocompleteProps, InputBaseProps } from "@mui/material";
 import { FieldError, FieldPath, FieldValues, Merge, UseControllerProps } from "react-hook-form";
 export type RhfAutocompleteOption = {
     label: string;
@@ -9,6 +9,6 @@ export type RhfAutocompleteProps<TFieldValues extends FieldValues, TName extends
     label: string;
     variant?: "standard" | "outlined" | "filled";
     helperText?: string;
-    textFieldProps?: Partial<TextFieldProps>;
+    InputProps?: InputBaseProps;
     options: RhfAutocompleteOption[];
 } & Omit<AutocompleteProps<any, boolean, boolean, boolean>, "options" | "renderInput" | "onChange" | "value">;

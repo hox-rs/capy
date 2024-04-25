@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import * as react_hook_form from 'react-hook-form';
 import { FieldValues, FieldPath, UseControllerProps, Merge, FieldError } from 'react-hook-form';
-import { TextFieldProps, AutocompleteProps, CheckboxProps, FormControlLabelProps, SwitchProps, RadioGroupProps } from '@mui/material';
+import { InputBaseProps, AutocompleteProps, CheckboxProps, FormControlLabelProps, SwitchProps, TextFieldProps, RadioGroupProps } from '@mui/material';
 import { DatePickerProps, DateTimePickerProps } from '@mui/x-date-pickers';
 
 type RhfAutocompleteOption = {
@@ -13,11 +13,11 @@ type RhfAutocompleteProps<TFieldValues extends FieldValues, TName extends FieldP
     label: string;
     variant?: "standard" | "outlined" | "filled";
     helperText?: string;
-    textFieldProps?: Partial<TextFieldProps>;
+    InputProps?: InputBaseProps;
     options: RhfAutocompleteOption[];
 } & Omit<AutocompleteProps<any, boolean, boolean, boolean>, "options" | "renderInput" | "onChange" | "value">;
 
-declare const RhfAutocomplete: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, control, defaultValue, label, error, options, freeSolo, multiple, fullWidth, noOptionsText, variant, helperText, textFieldProps, ...rest }: RhfAutocompleteProps<TFieldValues, TName>) => React.JSX.Element;
+declare const RhfAutocomplete: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, control, defaultValue, label, error, options, freeSolo, multiple, fullWidth, noOptionsText, variant, helperText, InputProps, ...rest }: RhfAutocompleteProps<TFieldValues, TName>) => React.JSX.Element;
 
 type RhfCheckboxProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> = UseControllerProps<TFieldValues, TName> & {
     error?: FieldError;
