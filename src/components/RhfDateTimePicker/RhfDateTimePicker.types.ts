@@ -16,6 +16,6 @@ export type RhfDateTimePickerProps<
   fullWidth?: boolean;
   helperText?: string;
 } & Omit<
-    DateTimePickerProps<Date>,
+    DateTimePickerProps<never>,
     "renderInput" | "value" | "error" | "onChange"
   >;

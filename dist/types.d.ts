@@ -32,7 +32,7 @@ type RhfDatePickerProps<TFieldValues extends FieldValues, TName extends FieldPat
     variant?: "outlined" | "standard" | "filled";
     fullWidth?: boolean;
     helperText?: string;
-} & Omit<DatePickerProps<Date>, "renderInput" | "value" | "error" | "onChange">;
+} & Omit<DatePickerProps<never>, "renderInput" | "value" | "error" | "onChange">;
 
 declare const RhfDatePicker: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, label, control, defaultValue, error, variant, fullWidth, helperText, ...rest }: RhfDatePickerProps<TFieldValues, TName>) => React.JSX.Element;
 
@@ -42,7 +42,7 @@ type RhfDateTimePickerProps<TFieldValues extends FieldValues, TName extends Fiel
     variant?: "outlined" | "standard" | "filled";
     fullWidth?: boolean;
     helperText?: string;
-} & Omit<DateTimePickerProps<Date>, "renderInput" | "value" | "error" | "onChange">;
+} & Omit<DateTimePickerProps<never>, "renderInput" | "value" | "error" | "onChange">;
 
 declare const RhfDateTimePicker: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, label, control, defaultValue, error, variant, fullWidth, helperText, ...rest }: RhfDateTimePickerProps<TFieldValues, TName>) => React.JSX.Element;
 
