@@ -1,6 +1,6 @@
 {
   "name": "@hox-rs/capy",
-  "version": "0.4.6",
+  "version": "0.5.0",
   "description": "hox.rs react components library",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -54,11 +54,11 @@
     "vite": "^4.5.1"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.15.0",
-    "@mui/material": "^5.15.0",
-    "@mui/x-date-pickers": "^6.18.5",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/icons-material": "^5.15.15",
+    "@mui/material": "^5.15.15",
+    "@mui/x-date-pickers": "^7.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.49.2"

@@ -55,10 +55,13 @@ const RhfAutocomplete = <
           _,
           data: RhfAutocompleteOption & RhfAutocompleteOption[]
         ) => {
+          console.log(data);
           if (multiple && Array.isArray(data)) {
             onChange((data || []).map((item) => item.value || item));
           } else if (data && typeof data === "object") {
             onChange(data?.value);
+          } else {
+            onChange(data);
           }
         }}
         defaultValue={defaultValue}
