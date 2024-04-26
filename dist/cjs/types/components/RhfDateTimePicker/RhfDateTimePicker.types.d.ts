@@ -6,4 +6,4 @@ export type RhfDateTimePickerProps<TFieldValues extends FieldValues, TName exten
     variant?: "outlined" | "standard" | "filled";
     fullWidth?: boolean;
     helperText?: string;
-} & Omit<DateTimePickerProps<Date>, "renderInput" | "value" | "error" | "onChange">;
+} & Omit<DateTimePickerProps<never>, "renderInput" | "value" | "error" | "onChange">;
