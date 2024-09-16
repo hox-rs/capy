@@ -24,6 +24,7 @@ Standard.args = {
   disabled: false,
   name: "name",
   label: "Field label",
+  defaultValue: 0,
 };
 
 export const Disabled: Story = (args) => {
@@ -38,6 +39,7 @@ Disabled.args = {
   disabled: true,
   name: "name",
   label: "Field label",
+  defaultValue: 0,
 };
 
 export const Dollar: Story = (args) => {
@@ -55,6 +57,7 @@ Dollar.args = {
   currencySymbol: "$",
   decimalSeparator: ".",
   thousandSeparator: ",",
+  defaultValue: 0,
 };
 
 export const WithDefaultValue: Story = (args) => {

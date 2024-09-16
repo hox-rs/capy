@@ -1,6 +1,6 @@
 {
   "name": "@hox-rs/capy",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "description": "hox.rs react components library",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -9,7 +9,7 @@
   "author": "Leonardo Lessa <lrlessa@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": "18.x"
+    "node": "20.x"
   },
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
@@ -50,17 +50,17 @@
     "rollup-plugin-polyfill-node": "^0.13.0",
     "storybook": "^7.6.5",
     "tslib": "^2.6.2",
-    "typescript": "^5.3.3",
+    "typescript": "^5.4.5",
     "vite": "^4.5.1"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5",
-    "@mui/icons-material": "^5.15.15",
-    "@mui/material": "^5.15.15",
-    "@mui/x-date-pickers": "^7.3.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-hook-form": "^7.49.2"
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^6.1.0",
+    "@mui/material": "^6.1.0",
+    "@mui/x-date-pickers": "^7.17.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.53.0"
   }
 }

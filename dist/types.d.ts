@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import * as react_hook_form from 'react-hook-form';
 import { FieldValues, FieldPath, UseControllerProps, Merge, FieldError } from 'react-hook-form';
 import { InputBaseProps, AutocompleteProps, CheckboxProps, FormControlLabelProps, SwitchProps, TextFieldProps, RadioGroupProps } from '@mui/material';
 import { DatePickerProps, DateTimePickerProps } from '@mui/x-date-pickers';
@@ -103,11 +102,6 @@ type RhfRadioGroupProps<TFieldValues extends FieldValues, TName extends FieldPat
     disabled?: boolean;
 };
 
-declare const RhfRadioGroup: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, label, options, control, defaultValue, error, disabled, ...rest }: RadioGroupProps & react_hook_form.UseControllerProps<TFieldValues, TName> & {
-    error?: react_hook_form.FieldError | undefined;
-    label: string;
-    options: RhfRadioGroupOption[];
-    disabled?: boolean | undefined;
-}) => React.JSX.Element;
+declare const RhfRadioGroup: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, label, options, control, defaultValue, error, disabled, ...rest }: RadioGroupProps & RhfRadioGroupProps<TFieldValues, TName>) => React.JSX.Element;
 
 export { MoneyField, type MoneyFieldProps, RhfAutocomplete, type RhfAutocompleteOption, type RhfAutocompleteProps, RhfCheckbox, RhfCheckboxGroup, type RhfCheckboxGroupOption, type RhfCheckboxGroupProps, type RhfCheckboxProps, RhfDatePicker, type RhfDatePickerProps, RhfDateTimePicker, type RhfDateTimePickerProps, RhfMoneyField, type RhfMoneyFieldProps, RhfRadioGroup, type RhfRadioGroupOption, type RhfRadioGroupProps, RhfSwitch, type RhfSwitchProps, RhfTextField, type RhfTextFieldProps };
