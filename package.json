@@ -1,6 +1,6 @@
 {
   "name": "@hox-rs/capy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "hox.rs react components library",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -9,7 +9,7 @@
   "author": "Leonardo Lessa <lrlessa@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": "20.x"
+    "node": ">=20"
   },
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",

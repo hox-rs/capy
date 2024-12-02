@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { IconButton, TextField } from "@mui/material";
 import { FieldPath, FieldValues, useController } from "react-hook-form";
