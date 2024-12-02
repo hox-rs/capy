@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { FieldPath, FieldValues, useController } from "react-hook-form";
 import { RhfMoneyFieldProps } from "./RhfMoneyField.types";
