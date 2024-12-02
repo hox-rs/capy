@@ -15,9 +15,7 @@ type Story = StoryObj<typeof MoneyField>;
 export const Standard: Story = (args) => {
   const [value, setValue] = useState(args.defaultValue);
 
-  return (
-    <MoneyField {...args} onChange={(_, v) => setValue(v)} value={value} />
-  );
+  return <MoneyField {...args} onChange={(v) => setValue(v)} value={value} />;
 };
 
 Standard.args = {
