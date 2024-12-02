@@ -67,7 +67,7 @@ type MoneyFieldProps = Omit<TextFieldProps, "onChange"> & {
     onChange?: (value: number) => void;
 };
 
-declare const MoneyField: React.MemoExoticComponent<({ currencySymbol, decimalSeparator, thousandSeparator, value, onChange, ...props }: MoneyFieldProps) => React.JSX.Element>;
+declare const _default: React.MemoExoticComponent<({ currencySymbol, decimalSeparator, thousandSeparator, value, onChange, ...props }: MoneyFieldProps) => React.JSX.Element>;
 
 type RhfMoneyFieldProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> = UseControllerProps<TFieldValues, TName> & {
     error?: FieldError;
@@ -104,4 +104,4 @@ type RhfRadioGroupProps<TFieldValues extends FieldValues, TName extends FieldPat
 
 declare const RhfRadioGroup: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, label, options, control, defaultValue, error, disabled, ...rest }: RadioGroupProps & RhfRadioGroupProps<TFieldValues, TName>) => React.JSX.Element;
 
-export { MoneyField, type MoneyFieldProps, RhfAutocomplete, type RhfAutocompleteOption, type RhfAutocompleteProps, RhfCheckbox, RhfCheckboxGroup, type RhfCheckboxGroupOption, type RhfCheckboxGroupProps, type RhfCheckboxProps, RhfDatePicker, type RhfDatePickerProps, RhfDateTimePicker, type RhfDateTimePickerProps, RhfMoneyField, type RhfMoneyFieldProps, RhfRadioGroup, type RhfRadioGroupOption, type RhfRadioGroupProps, RhfSwitch, type RhfSwitchProps, RhfTextField, type RhfTextFieldProps };
+export { _default as MoneyField, type MoneyFieldProps, RhfAutocomplete, type RhfAutocompleteOption, type RhfAutocompleteProps, RhfCheckbox, RhfCheckboxGroup, type RhfCheckboxGroupOption, type RhfCheckboxGroupProps, type RhfCheckboxProps, RhfDatePicker, type RhfDatePickerProps, RhfDateTimePicker, type RhfDateTimePickerProps, RhfMoneyField, type RhfMoneyFieldProps, RhfRadioGroup, type RhfRadioGroupOption, type RhfRadioGroupProps, RhfSwitch, type RhfSwitchProps, RhfTextField, type RhfTextFieldProps };
