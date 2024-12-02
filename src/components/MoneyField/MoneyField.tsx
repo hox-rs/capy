@@ -1,14 +1,16 @@
-"use client";
-
 import React, { memo, useMemo } from "react";
 import { TextField } from "@mui/material";
 import { MoneyFieldProps } from "./MoneyField.types";
 
 const formatValue = (
-  value: number,
+  value: number | undefined,
   decimalSeparator: string,
   thousandSeparator: string
 ) => {
+  if (!value) {
+    return "";
+  }
+
   const fixedValue = (Math.round(value * 100) / 100).toFixed(2);
 
   // Divide a parte inteira e decimal
@@ -47,8 +49,10 @@ const MoneyField = memo(
     return (
       <TextField
         {...props}
-        InputProps={{
-          startAdornment: currencySymbol,
+        slotProps={{
+          input: {
+            startAdornment: currencySymbol,
+          },
         }}
         sx={{
           "& input": {
