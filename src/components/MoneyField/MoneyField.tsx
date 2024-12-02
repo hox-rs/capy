@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from "react";
+import React, { memo, useCallback, useMemo } from "react";
 import { TextField } from "@mui/material";
 import { MoneyFieldProps } from "./MoneyField.types";
 
@@ -7,65 +7,64 @@ const formatValue = (
   decimalSeparator: string,
   thousandSeparator: string
 ) => {
-  if (!value) {
+  if (value === undefined) {
     return "";
   }
-
-  const fixedValue = (Math.round(value * 100) / 100).toFixed(2);
-
-  // Divide a parte inteira e decimal
-  const [integerPart, decimalPart] = fixedValue.split(".");
-
-  // Adiciona o separador de milhar à parte inteira
-  const integerWithThousandSeparator = integerPart.replace(
-    /\B(?=(\d{3})+(?!\d))/g,
-    thousandSeparator
-  );
-
-  // Junta todas as partes
-  return `${integerWithThousandSeparator}${decimalSeparator}${decimalPart}`;
+  const fixedValue = value.toFixed(2);
+  return fixedValue
+    .replace(".", decimalSeparator)
+    .replace(/\B(?=(\d{3})+(?!\d))/g, thousandSeparator);
 };
 
-const MoneyField = memo(
-  ({
-    currencySymbol = "R$",
-    decimalSeparator = ",",
-    thousandSeparator = ".",
-    value,
-    onChange,
-    ...props
-  }: MoneyFieldProps) => {
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+const MoneyField = ({
+  currencySymbol = "R$",
+  decimalSeparator = ",",
+  thousandSeparator = ".",
+  value,
+  onChange,
+  ...props
+}: MoneyFieldProps) => {
+  const handleChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
       const { value } = event.target;
       const onlyNumbers = value.replace(/^0+|[^0-9]+/g, "");
       onChange?.(onlyNumbers ? Number(onlyNumbers) / 100 : 0);
-    };
+    },
+    [onChange]
+  );
 
-    const transformedValue = useMemo(
-      () => formatValue(value, decimalSeparator, thousandSeparator),
-      [value, decimalSeparator, thousandSeparator]
-    );
+  const transformedValue = useMemo(
+    () => formatValue(value, decimalSeparator, thousandSeparator),
+    [value, decimalSeparator, thousandSeparator]
+  );
 
-    return (
-      <TextField
-        {...props}
-        slotProps={{
-          input: {
-            startAdornment: currencySymbol,
-          },
-        }}
-        sx={{
-          "& input": {
-            textAlign: "right",
-          },
-        }}
-        value={transformedValue}
-        onChange={handleChange}
-      />
-    );
-  }
-);
+  const inputStyles = useMemo(
+    () => ({
+      "& input": {
+        textAlign: "right",
+      },
+    }),
+    []
+  );
 
-MoneyField.displayName = "MoneyField";
+  const slotProps = useMemo(
+    () => ({
+      input: {
+        startAdornment: currencySymbol,
+      },
+    }),
+    [currencySymbol]
+  );
 
-export default MoneyField;
+  return (
+    <TextField
+      {...props}
+      slotProps={slotProps}
+      sx={inputStyles}
+      value={transformedValue}
+      onChange={handleChange}
+    />
+  );
+};
+
+export default memo(MoneyField);

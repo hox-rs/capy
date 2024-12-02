@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { FieldPath, FieldValues, useController } from "react-hook-form";
 import { RhfMoneyFieldProps } from "./RhfMoneyField.types";
 import MoneyField from "../MoneyField";
@@ -19,21 +19,29 @@ const RhfMoneyField = <
   ...rest
 }: RhfMoneyFieldProps<TFieldValues, TName>) => {
   const {
-    field: { onChange, value, ref, ...props },
-  } = useController({ control, name, defaultValue });
+    field: { onChange, value, ref, ...fieldProps },
+  } = useController({
+    control,
+    name,
+    defaultValue,
+  });
+
+  const helperText = useMemo(
+    () => (error ? error.message : undefined),
+    [error]
+  );
 
   return (
     <MoneyField
       label={label}
       error={Boolean(error)}
       fullWidth={fullWidth}
-      multiline={!!rows}
-      rows={rows}
-      helperText={error && <>{error.message}</>}
+      helperText={helperText}
       onChange={onChange}
       inputRef={ref}
       variant={variant}
-      {...props}
+      {...(rows ? { multiline: true, rows } : {})}
+      {...fieldProps}
       {...rest}
       value={value}
     />
