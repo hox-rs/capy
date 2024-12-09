@@ -3,7 +3,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import RhfDatePicker from "./RhfDatePicker";
 import { useForm } from "react-hook-form";
 import { LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
 
 const meta: Meta<typeof RhfDatePicker> = {
   component: RhfDatePicker,
