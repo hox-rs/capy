@@ -4,7 +4,7 @@ import {
   Checkbox,
   FormHelperText,
 } from "@mui/material";
-import React from "react";
+import React, { useCallback, useMemo } from "react";
 import { FieldPath, FieldValues, useController } from "react-hook-form";
 import { RhfCheckboxProps } from "./RhfCheckbox.types";
 
@@ -23,9 +23,14 @@ const RhfCheckbox = <
     field: { onChange, value, ref },
   } = useController({ control, name, defaultValue });
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(event.target.checked);
-  };
+  const handleChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      onChange(event.target.checked);
+    },
+    [onChange]
+  );
+
+  const helperText = useMemo(() => error?.message, [error]);
 
   return (
     <FormControl error={!!error}>
@@ -34,13 +39,14 @@ const RhfCheckbox = <
           <Checkbox
             {...props}
             checked={value}
+            defaultValue={defaultValue}
             onChange={handleChange}
             inputRef={ref}
           />
         }
         label={label}
       />
-      <FormHelperText>{error?.message}</FormHelperText>
+      <FormHelperText>{helperText}</FormHelperText>
     </FormControl>
   );
 };
