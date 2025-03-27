@@ -48,7 +48,7 @@ declare const RhfDateTimePicker: <TFieldValues extends FieldValues, TName extend
 type RhfSwitchProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> = UseControllerProps<TFieldValues, TName> & {
     error?: FieldError;
     label: ReactNode | string;
-    labelPlacement: FormControlLabelProps["labelPlacement"];
+    labelPlacement?: FormControlLabelProps["labelPlacement"];
 } & SwitchProps;
 
 declare const RhfSwitch: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, label, control, defaultValue, error, labelPlacement, ...props }: RhfSwitchProps<TFieldValues, TName>) => React.JSX.Element;

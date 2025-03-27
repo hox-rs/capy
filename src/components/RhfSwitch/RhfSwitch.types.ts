@@ -13,5 +13,5 @@ export type RhfSwitchProps<
 > = UseControllerProps<TFieldValues, TName> & {
   error?: FieldError;
   label: ReactNode | string;
-  labelPlacement: FormControlLabelProps["labelPlacement"];
+  labelPlacement?: FormControlLabelProps["labelPlacement"];
 } & SwitchProps;
