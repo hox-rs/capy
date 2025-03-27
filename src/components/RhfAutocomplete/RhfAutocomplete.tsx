@@ -78,15 +78,17 @@ const RhfAutocomplete = <
         renderInput={(params) => (
           <TextField
             {...params}
-            InputProps={{
-              ...params.InputProps,
-              ...InputProps,
-              endAdornment: (
-                <>
-                  {params.InputProps?.endAdornment}
-                  {InputProps?.endAdornment}
-                </>
-              ),
+            slotProps={{
+              input: {
+                ...params.InputProps,
+                ...InputProps,
+                endAdornment: (
+                  <>
+                    {params.InputProps?.endAdornment}
+                    {InputProps?.endAdornment}
+                  </>
+                ),
+              },
             }}
             error={!!error}
             variant={variant}

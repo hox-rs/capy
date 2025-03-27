@@ -43,7 +43,11 @@ const RhfCheckboxGroup = <
                     onChange(value.filter((v: string) => v !== option.value));
                   }
                 }}
-                inputRef={ref}
+                slotProps={{
+                  input: {
+                    ref,
+                  },
+                }}
               />
             }
             label={option.label}

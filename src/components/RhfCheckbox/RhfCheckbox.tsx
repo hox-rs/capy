@@ -41,7 +41,11 @@ const RhfCheckbox = <
             checked={value}
             defaultValue={defaultValue}
             onChange={handleChange}
-            inputRef={ref}
+            slotProps={{
+              input: {
+                ref,
+              },
+            }}
           />
         }
         label={label}

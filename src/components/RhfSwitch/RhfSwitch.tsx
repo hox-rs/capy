@@ -17,7 +17,7 @@ const RhfSwitch = <
   control,
   defaultValue,
   error,
-  labelPlacement,
+  labelPlacement = "end",
   ...props
 }: RhfSwitchProps<TFieldValues, TName>) => {
   const {
@@ -36,7 +36,11 @@ const RhfSwitch = <
             {...props}
             checked={value}
             onChange={handleChange}
-            inputRef={ref}
+            slotProps={{
+              input: {
+                ref,
+              },
+            }}
           />
         }
         labelPlacement={labelPlacement}

@@ -2,7 +2,8 @@ import React, { useMemo, useCallback, useState } from "react";
 import { IconButton, TextField } from "@mui/material";
 import { FieldPath, FieldValues, useController } from "react-hook-form";
 import { RhfTextFieldProps } from "./RhfTextField.types";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const RhfTextField = <
   TFieldValues extends FieldValues,
