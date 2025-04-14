@@ -49,11 +49,13 @@ const MoneyField = ({
 
   const slotProps = useMemo(
     () => ({
+      ...props.slotProps,
       input: {
+        ...props.slotProps?.input,
         startAdornment: currencySymbol,
       },
     }),
-    [currencySymbol]
+    [currencySymbol, props.slotProps]
   );
 
   return (
