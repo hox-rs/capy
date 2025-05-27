@@ -28,22 +28,20 @@ declare const RhfCheckbox: <TFieldValues extends FieldValues, TName extends Fiel
 type RhfDatePickerProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> = UseControllerProps<TFieldValues, TName> & {
     error?: FieldError;
     label: string;
-    variant?: "outlined" | "standard" | "filled";
     fullWidth?: boolean;
     helperText?: string;
 } & Omit<DatePickerProps<never>, "renderInput" | "value" | "error" | "onChange">;
 
-declare const RhfDatePicker: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, label, control, defaultValue, error, variant, fullWidth, helperText, ...rest }: RhfDatePickerProps<TFieldValues, TName>) => React.JSX.Element;
+declare const RhfDatePicker: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, label, control, defaultValue, error, fullWidth, helperText, ...rest }: RhfDatePickerProps<TFieldValues, TName>) => React.JSX.Element;
 
 type RhfDateTimePickerProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> = UseControllerProps<TFieldValues, TName> & {
     error?: FieldError;
     label: string;
-    variant?: "outlined" | "standard" | "filled";
     fullWidth?: boolean;
     helperText?: string;
 } & Omit<DateTimePickerProps<never>, "renderInput" | "value" | "error" | "onChange">;
 
-declare const RhfDateTimePicker: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, label, control, defaultValue, error, variant, fullWidth, helperText, ...rest }: RhfDateTimePickerProps<TFieldValues, TName>) => React.JSX.Element;
+declare const RhfDateTimePicker: <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({ name, label, control, defaultValue, error, fullWidth, helperText, ...rest }: RhfDateTimePickerProps<TFieldValues, TName>) => React.JSX.Element;
 
 type RhfSwitchProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> = UseControllerProps<TFieldValues, TName> & {
     error?: FieldError;

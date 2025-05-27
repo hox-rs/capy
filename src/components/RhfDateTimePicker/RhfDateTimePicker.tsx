@@ -12,7 +12,6 @@ const RhfDateTimePicker = <
   control,
   defaultValue,
   error,
-  variant = "outlined",
   fullWidth = true,
   helperText,
   ...rest
@@ -28,7 +27,6 @@ const RhfDateTimePicker = <
         textField: {
           helperText: error?.message || helperText,
           error: !!error,
-          variant,
           fullWidth,
           ...rest?.slotProps?.textField,
         },

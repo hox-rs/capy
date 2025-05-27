@@ -12,7 +12,6 @@ export type RhfDatePickerProps<
 > = UseControllerProps<TFieldValues, TName> & {
   error?: FieldError;
   label: string;
-  variant?: "outlined" | "standard" | "filled";
   fullWidth?: boolean;
   helperText?: string;
 } & Omit<
