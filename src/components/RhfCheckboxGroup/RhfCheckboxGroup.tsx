@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import {
   FormControl,
   FormLabel,
@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { FieldPath, FieldValues, useController } from "react-hook-form";
 import { RhfCheckboxGroupProps } from "./RhfCheckboxGroup.types";
+import { getErrorText, hasError } from "../../types/base";
 
 const RhfCheckboxGroup = <
   TFieldValues extends FieldValues,
@@ -20,29 +21,39 @@ const RhfCheckboxGroup = <
   control,
   defaultValue,
   error,
+  helperText,
+  disabled,
   row,
 }: RhfCheckboxGroupProps<TFieldValues, TName>) => {
   const {
     field: { onChange, value, ref },
   } = useController({ control, name, defaultValue });
 
+  // Ensure value is treated as string array for checkbox groups
+  const currentValue: string[] = Array.isArray(value) ? value : [];
+  const errorText = getErrorText(error, helperText);
+  const isError = hasError(error);
+
   return (
-    <FormControl error={!!error}>
-      <FormLabel>{label}</FormLabel>
+    <FormControl error={isError} disabled={disabled}>
+      {label && <FormLabel>{label}</FormLabel>}
       <FormGroup sx={{ pl: 1 }} row={row}>
         {options.map((option) => (
           <FormControlLabel
-            key={option.label}
+            key={option.value}
             control={
               <Checkbox
-                checked={value?.includes(option.value)}
+                checked={currentValue.includes(option.value)}
                 onChange={(e) => {
                   if (e.target.checked) {
-                    onChange([...value, option.value]);
+                    onChange([...currentValue, option.value]);
                   } else {
-                    onChange(value.filter((v: string) => v !== option.value));
+                    onChange(
+                      currentValue.filter((v: string) => v !== option.value)
+                    );
                   }
                 }}
+                disabled={option.disabled || disabled}
                 slotProps={{
                   input: {
                     ref,
@@ -51,12 +62,15 @@ const RhfCheckboxGroup = <
               />
             }
             label={option.label}
+            disabled={option.disabled || disabled}
           />
         ))}
       </FormGroup>
-      <FormHelperText>{error?.message}</FormHelperText>
+      {errorText && <FormHelperText>{errorText}</FormHelperText>}
     </FormControl>
   );
 };
 
-export default RhfCheckboxGroup;
+RhfCheckboxGroup.displayName = "RhfCheckboxGroup";
+
+export default memo(RhfCheckboxGroup);

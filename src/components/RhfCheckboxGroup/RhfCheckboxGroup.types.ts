@@ -1,24 +1,17 @@
-import {
-  FieldError,
-  FieldPath,
-  FieldValues,
-  Merge,
-  UseControllerProps,
-} from "react-hook-form";
+import { FieldPath, FieldValues } from "react-hook-form";
+import { BaseRhfFieldProps, BaseOption } from "../../types/base";
 
-export type RhfCheckboxGroupOption = {
-  label: string;
+export interface RhfCheckboxGroupOption extends BaseOption {
+  /** Value must be string for checkbox groups */
   value: string;
-  disabled?: boolean;
-};
+}
 
-export type RhfCheckboxGroupProps<
+export interface RhfCheckboxGroupProps<
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues>
-> = UseControllerProps<TFieldValues, TName> & {
-  error?: Merge<FieldError, (FieldError | undefined)[]> | undefined;
-  label: string;
+> extends BaseRhfFieldProps<TFieldValues, TName> {
+  /** Array of checkbox options */
   options: RhfCheckboxGroupOption[];
-  disabled?: boolean;
+  /** Display checkboxes in a row instead of column */
   row?: boolean;
-};
+}

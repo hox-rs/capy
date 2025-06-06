@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import {
   RadioGroupProps,
   FormControl,
@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { FieldPath, FieldValues, useController } from "react-hook-form";
 import { RhfRadioGroupProps } from "./RhfRadioGroup.types";
+import { getErrorText, hasError } from "../../types/base";
 
 const RhfRadioGroup = <
   TFieldValues extends FieldValues,
@@ -21,15 +22,20 @@ const RhfRadioGroup = <
   control,
   defaultValue,
   error,
+  helperText,
   disabled,
   ...rest
 }: RadioGroupProps & RhfRadioGroupProps<TFieldValues, TName>) => {
   const {
     field: { onChange, value, ref, ...props },
+    fieldState: { error: fieldError },
   } = useController({ control, name, defaultValue });
 
+  const displayText = getErrorText(fieldError, helperText);
+  const isError = hasError(fieldError);
+
   return (
-    <FormControl error={!!error}>
+    <FormControl error={isError}>
       <FormLabel sx={{ mb: 1 }}>{label}</FormLabel>
       <RadioGroup
         sx={{ pl: 1 }}
@@ -48,9 +54,11 @@ const RhfRadioGroup = <
           />
         ))}
       </RadioGroup>
-      <FormHelperText>{error?.message}</FormHelperText>
+      {displayText && <FormHelperText>{displayText}</FormHelperText>}
     </FormControl>
   );
 };
 
-export default RhfRadioGroup;
+RhfRadioGroup.displayName = "RhfRadioGroup";
+
+export default memo(RhfRadioGroup);

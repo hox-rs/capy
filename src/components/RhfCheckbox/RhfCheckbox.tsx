@@ -4,9 +4,10 @@ import {
   Checkbox,
   FormHelperText,
 } from "@mui/material";
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, memo } from "react";
 import { FieldPath, FieldValues, useController } from "react-hook-form";
 import { RhfCheckboxProps } from "./RhfCheckbox.types";
+import { getErrorText, hasError } from "../../types/base";
 
 const RhfCheckbox = <
   TFieldValues extends FieldValues,
@@ -17,11 +18,16 @@ const RhfCheckbox = <
   control,
   defaultValue,
   error,
+  helperText,
   ...props
 }: RhfCheckboxProps<TFieldValues, TName>) => {
   const {
     field: { onChange, value, ref },
+    fieldState: { error: fieldError },
   } = useController({ control, name, defaultValue });
+
+  const displayText = getErrorText(fieldError, helperText);
+  const isError = hasError(fieldError);
 
   const handleChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,10 +36,8 @@ const RhfCheckbox = <
     [onChange]
   );
 
-  const helperText = useMemo(() => error?.message, [error]);
-
   return (
-    <FormControl error={!!error}>
+    <FormControl error={isError}>
       <FormControlLabel
         control={
           <Checkbox
@@ -50,9 +54,11 @@ const RhfCheckbox = <
         }
         label={label}
       />
-      <FormHelperText>{helperText}</FormHelperText>
+      <FormHelperText>{displayText}</FormHelperText>
     </FormControl>
   );
 };
 
-export default RhfCheckbox;
+RhfCheckbox.displayName = "RhfCheckbox";
+
+export default memo(RhfCheckbox);
