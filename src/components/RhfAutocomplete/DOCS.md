@@ -716,4 +716,4 @@ O componente segue as diretrizes de acessibilidade:
 ---
 
 **Última atualização:** Dezembro 2024
-**Versão da biblioteca:** 4.0.0
+**Versão da biblioteca:** 5.0.0
