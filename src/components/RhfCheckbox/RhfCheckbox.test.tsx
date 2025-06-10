@@ -21,7 +21,14 @@ import { useForm } from "react-hook-form";
 
 // create element that implements control and wraps because hooks can only be used inside a component
 const RhfCheckboxWrapper = (props: any) => {
-  const { control } = useForm();
+  const { control, setError } = useForm();
+
+  // If error prop is passed, simulate form error state
+  React.useEffect(() => {
+    if (props.error) {
+      setError(props.name, props.error);
+    }
+  }, [props.error, props.name, setError]);
 
   return <RhfCheckbox control={control} {...props} />;
 };

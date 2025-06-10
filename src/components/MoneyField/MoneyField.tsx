@@ -69,4 +69,6 @@ const MoneyField = ({
   );
 };
 
+MoneyField.displayName = "MoneyField";
+
 export default memo(MoneyField);

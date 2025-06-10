@@ -4,9 +4,10 @@ import {
   Switch,
   FormHelperText,
 } from "@mui/material";
-import React from "react";
+import React, { memo } from "react";
 import { FieldPath, FieldValues, useController } from "react-hook-form";
 import { RhfSwitchProps } from "./RhfSwitch.types";
+import { getErrorText, hasError } from "../../types/base";
 
 const RhfSwitch = <
   TFieldValues extends FieldValues,
@@ -17,19 +18,24 @@ const RhfSwitch = <
   control,
   defaultValue,
   error,
+  helperText,
   labelPlacement = "end",
   ...props
 }: RhfSwitchProps<TFieldValues, TName>) => {
   const {
     field: { onChange, value, ref },
+    fieldState: { error: fieldError },
   } = useController({ control, name, defaultValue });
+
+  const displayText = getErrorText(fieldError, helperText);
+  const isError = hasError(fieldError);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.checked);
   };
 
   return (
-    <FormControl error={!!error}>
+    <FormControl error={isError}>
       <FormControlLabel
         control={
           <Switch
@@ -46,9 +52,11 @@ const RhfSwitch = <
         labelPlacement={labelPlacement}
         label={label}
       />
-      <FormHelperText>{error?.message}</FormHelperText>
+      <FormHelperText>{displayText}</FormHelperText>
     </FormControl>
   );
 };
 
-export default RhfSwitch;
+RhfSwitch.displayName = "RhfSwitch";
+
+export default memo(RhfSwitch);

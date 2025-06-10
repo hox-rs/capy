@@ -1,7 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import { DateTimePicker } from "@mui/x-date-pickers";
 import { FieldPath, FieldValues, useController } from "react-hook-form";
 import { RhfDateTimePickerProps } from "./RhfDateTimePicker.types";
+import { getErrorText, hasError } from "../../types/base";
 
 const RhfDateTimePicker = <
   TFieldValues extends FieldValues,
@@ -19,14 +20,18 @@ const RhfDateTimePicker = <
   const {
     field: { onChange, value, ref, ...props },
   } = useController({ control, name, defaultValue });
+
+  const displayText = getErrorText(error, helperText);
+  const isError = hasError(error);
+
   return (
     <DateTimePicker
       label={label}
       value={value}
       slotProps={{
         textField: {
-          helperText: error?.message || helperText,
-          error: !!error,
+          helperText: displayText,
+          error: isError,
           fullWidth,
           ...rest?.slotProps?.textField,
         },
@@ -40,4 +45,6 @@ const RhfDateTimePicker = <
   );
 };
 
-export default RhfDateTimePicker;
+RhfDateTimePicker.displayName = "RhfDateTimePicker";
+
+export default memo(RhfDateTimePicker);

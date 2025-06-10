@@ -4,12 +4,13 @@ import {
   FormHelperText,
   TextField,
 } from "@mui/material";
-import React from "react";
+import React, { memo } from "react";
 import { FieldPath, FieldValues, useController } from "react-hook-form";
 import {
   RhfAutocompleteOption,
   RhfAutocompleteProps,
 } from "./RhfAutocomplete.types";
+import { getErrorText, hasError } from "../../types/base";
 
 const RhfAutocomplete = <
   TFieldValues extends FieldValues,
@@ -33,8 +34,12 @@ const RhfAutocomplete = <
   const {
     field: { onChange, value, ...props },
   } = useController({ control, name, defaultValue });
+
+  const displayText = getErrorText(error, helperText);
+  const isError = hasError(error);
+
   return (
-    <FormControl error={!!error} fullWidth={fullWidth}>
+    <FormControl error={isError} fullWidth={fullWidth}>
       <Autocomplete
         options={options}
         fullWidth={fullWidth}
@@ -70,7 +75,7 @@ const RhfAutocomplete = <
             renderProps: React.HTMLAttributes<HTMLLIElement>,
             option: RhfAutocompleteOption & string
           ) => (
-            <li {...renderProps} key={option.value}>
+            <li {...renderProps} key={String(option.value)}>
               {option?.label || option}
             </li>
           ))
@@ -90,7 +95,7 @@ const RhfAutocomplete = <
                 ),
               },
             }}
-            error={!!error}
+            error={isError}
             variant={variant}
             label={label}
           />
@@ -98,9 +103,11 @@ const RhfAutocomplete = <
         {...props}
         {...rest}
       />
-      <FormHelperText>{error?.message || helperText}</FormHelperText>
+      {displayText && <FormHelperText>{displayText}</FormHelperText>}
     </FormControl>
   );
 };
 
-export default RhfAutocomplete;
+RhfAutocomplete.displayName = "RhfAutocomplete";
+
+export default memo(RhfAutocomplete);

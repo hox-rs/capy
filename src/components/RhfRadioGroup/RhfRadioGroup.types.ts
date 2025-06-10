@@ -1,22 +1,12 @@
-import {
-  FieldError,
-  FieldPath,
-  FieldValues,
-  UseControllerProps,
-} from "react-hook-form";
+import { FieldPath, FieldValues } from "react-hook-form";
+import { BaseRhfFieldProps, BaseOption } from "../../types/base";
 
-export type RhfRadioGroupOption = {
-  value: string | boolean | number;
-  label: string;
-  disabled?: boolean;
-};
+export type RhfRadioGroupOption = BaseOption;
 
 export type RhfRadioGroupProps<
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues>
-> = UseControllerProps<TFieldValues, TName> & {
-  error?: FieldError;
-  label: string;
+> = BaseRhfFieldProps<TFieldValues, TName> & {
+  /** Array of radio options */
   options: RhfRadioGroupOption[];
-  disabled?: boolean;
 };

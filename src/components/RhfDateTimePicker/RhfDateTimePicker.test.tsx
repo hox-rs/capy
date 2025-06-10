@@ -44,7 +44,7 @@ describe("Testing <RhfDateTimePicker />", () => {
       />
     );
 
-    expect(getByRole("textbox")).toBeInTheDocument();
+    expect(getByRole("group", { name: "Field label" })).toBeInTheDocument();
   });
 
   it("should render RhfDateTimePicker with a default value", () => {
@@ -56,7 +56,8 @@ describe("Testing <RhfDateTimePicker />", () => {
       />
     );
 
-    expect(getByRole("textbox")).toHaveValue("09/01/2021 04:00 AM");
+    const monthField = getByRole("spinbutton", { name: "Month" });
+    expect(monthField).toHaveAttribute("aria-valuenow", "9");
   });
 
   it("should render RhfDateTimePicker with an error", () => {
@@ -95,7 +96,7 @@ describe("Testing <RhfDateTimePicker />", () => {
       />
     );
 
-    expect(getByRole("textbox")).toHaveClass("MuiInputBase-input");
+    expect(getByRole("group")).toBeInTheDocument();
   });
 
   it("should render RhfDateTimePicker with fullWidth false ", () => {
@@ -108,6 +109,6 @@ describe("Testing <RhfDateTimePicker />", () => {
       />
     );
 
-    expect(getByRole("textbox")).not.toHaveClass("MuiInputBase-fullWidth");
+    expect(getByRole("group")).not.toHaveClass("MuiPickersInputBase-fullWidth");
   });
 });

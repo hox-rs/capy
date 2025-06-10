@@ -148,7 +148,9 @@ const config = {
   testEnvironment: "jsdom",
 
   // Options that will be passed to the testEnvironment
-  // testEnvironmentOptions: {},
+  testEnvironmentOptions: {
+    customExportConditions: ["node", "node-addons"],
+  },
 
   // Adds a location field to test results
   // testLocationInResults: false,
@@ -193,6 +195,9 @@ const config = {
 
   // Whether to use watchman for file crawling
   // watchman: true,
+  globals: {
+    IS_REACT_ACT_ENVIRONMENT: true,
+  },
 };
 
 module.exports = config;

@@ -1,7 +1,8 @@
-import React, { useMemo, useCallback, useState } from "react";
+import React, { useMemo, useCallback, useState, memo } from "react";
 import { IconButton, TextField } from "@mui/material";
 import { FieldPath, FieldValues, useController } from "react-hook-form";
 import { RhfTextFieldProps } from "./RhfTextField.types";
+import { getErrorText, hasError } from "../../types/base";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
@@ -18,6 +19,7 @@ const RhfTextField = <
   rows,
   type,
   fullWidth = true,
+  helperText,
   ...rest
 }: RhfTextFieldProps<TFieldValues, TName>) => {
   const [stateType, setStateType] = useState(type);
@@ -25,6 +27,9 @@ const RhfTextField = <
   const {
     field: { onChange, value, ref },
   } = useController({ control, name, defaultValue });
+
+  const displayText = getErrorText(error, helperText);
+  const isError = hasError(error);
 
   const toggleVisibility = useCallback(() => {
     setStateType((prevType) => (prevType === "password" ? "text" : "password"));
@@ -48,11 +53,6 @@ const RhfTextField = <
     };
   }, [rest.slotProps, type, stateType, toggleVisibility]);
 
-  const helperText = useMemo(
-    () => (error ? error.message : undefined),
-    [error]
-  );
-
   const filteredRest = useMemo(() => {
     const { slotProps: restInputProps, ...otherRest } = rest;
     return otherRest;
@@ -62,13 +62,13 @@ const RhfTextField = <
     <TextField
       label={label}
       value={value}
-      error={Boolean(error)}
+      error={isError}
       fullWidth={fullWidth}
       multiline={!!rows}
       rows={rows}
       type={stateType}
       slotProps={slotProps}
-      helperText={helperText}
+      helperText={displayText}
       onChange={onChange}
       inputRef={ref}
       variant={variant}
@@ -77,4 +77,6 @@ const RhfTextField = <
   );
 };
 
-export default RhfTextField;
+RhfTextField.displayName = "RhfTextField";
+
+export default memo(RhfTextField);
