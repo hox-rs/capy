@@ -589,4 +589,4 @@ error={errors.data}
 
 **Próximo:** [RhfDateTimePicker](../RhfDateTimePicker/DOCS.md) - Para seleção de data e hora
 **Última atualização:** Dezembro 2024
-**Versão da biblioteca:** 5.0.0
+**Versão da biblioteca:** 5.0.1
