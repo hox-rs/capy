@@ -638,4 +638,4 @@ const receberDoAPI = async () => {
 
 **Anterior:** [RhfDatePicker](../RhfDatePicker/DOCS.md) - Para seleção apenas de data
 **Última atualização:** Dezembro 2024
-**Versão da biblioteca:** 4.0.0
+**Versão da biblioteca:** 5.0.0
